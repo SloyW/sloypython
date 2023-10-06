@@ -42,9 +42,7 @@ totalDistance = 0.0
 totalTime = 0.0
 ## first coord pls setup time
 fileEntry(coordinates[0],0)
-firstAdjusted = coordinates[0]
-firstAdjusted[0] += 0.000001
-firstAdjusted[1] += 0.000001
+firstAdjusted = (round(coordinates[0][0]+0.000001,6),round(coordinates[0][1]+0.000001,6))
 fileEntry(firstAdjusted,60)
 totalTime += 60
 ##
@@ -60,9 +58,7 @@ for index in range(1, len(coordinates)):
     fileEntry(coordinates[index], totalTime)
 ## last coord cooldown
 totalTime += 60
-lastAdjusted = coordinates[len(coordinates)-1]
-lastAdjusted[0] += 0.000001
-lastAdjusted[1] += 0.000001
+lastAdjusted = (round(coordinates[len(coordinates)-1][0]+0.000001,6),round(coordinates[len(coordinates)-1][1]+0.000001,6))
 fileEntry(lastAdjusted,totalTime)
 ##
 
@@ -70,9 +66,8 @@ fileEntry(lastAdjusted,totalTime)
 loopDistance = geodesic(coordinates[len(coordinates)-1],coordinates[0]).km
 loopTime = math.ceil(loopDistance*1000/1.25)
 
-firstAdjusted[0] -= 0.000002
-firstAdjusted[1] -= 0.000002
-fileEntry(firstAdjusted, loopTime + totalTime)
+firstAdjustedAgain = (round(coordinates[0][0]-0.000001,6),round(coordinates[0][1]-0.000001,6))
+fileEntry(firstAdjustedAgain, loopTime + totalTime)
 ##
 
 # file close
