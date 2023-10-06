@@ -42,8 +42,8 @@ totalDistance = 0.0
 totalTime = 0.0
 ## first coord pls setup time
 fileEntry(coordinates[0],0)
-fileEntry(coordinates[0],20)
-totalTime += 20
+fileEntry(coordinates[0],60)
+totalTime += 60
 ##
 
 for index in range(1, len(coordinates)):
